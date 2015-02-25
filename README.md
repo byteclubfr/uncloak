@@ -1,6 +1,5 @@
-[![Build Status](https://img.shields.io/travis//master.svg?style=flat)](https://travis-ci.org/)
-[![Dependency Status](https://david-dm.org/.svg?style=flat)](https://david-dm.org/)
-[![devDependency Status](https://david-dm.org//dev-status.svg?style=flat)](https://david-dm.org/#info=devDependencies)
+[![Dependency Status](https://david-dm.org/lmtm/uncloak.svg?style=flat)](https://david-dm.org/)
+[![devDependency Status](https://david-dm.org/lmtm/uncloak/dev-status.svg?style=flat)](https://david-dm.org/#info=devDependencies)
 
 # uncloak
 

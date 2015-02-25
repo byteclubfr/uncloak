@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/.git"
+    "url": "https://github.com/lmtm/uncloak.git"
   },
   "author": "Delapouite",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com//issues"
+    "url": "https://github.com/lmtm/uncloak/issues"
   },
-  "homepage": "https://github.com/",
+  "homepage": "https://github.com/lmtm/uncloak",
   "devDependencies": {
     "babel": "^4.3.0",
     "expect": "^1.6.0",
