@@ -1,0 +1,32 @@
+* {
+	box-sizing: border-box;
+}
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+body {
+	background: white;
+	color: #333;
+	font-family: Arial, sans;
+}
+main {
+	display: flex;
+	height: 100%;
+}
+iframe {
+	border: none;
+	flex-basis: 75%;
+}
+aside {
+	background: #eee;
+	flex-basis: 25%;
+	padding: 1vw;
+}
+output {
+	background: #ddd;
+	display: block;
+	height: 200px;
+	overflow: scroll;
+}

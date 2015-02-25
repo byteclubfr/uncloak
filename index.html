@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Uncloak - reveal.js theme creator</title>
+	<link rel="stylesheet" href="css/uncloak.css"></link>
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="lib/app.js"></script>
+</head>
+<body ng-app="uncloak">
+	<main ng-controller="MainCtrl">
+		<iframe id="reveal-preview" src="node_modules/reveal.js/index.html" seamless></iframe>
+		<aside>
+			<h1>Uncloak</h1>
+			<div class="form-group" ng-repeat="(k, v) in theme">
+				<label>${{ k }} <input ng-model="theme[k]" type="{{ getType(k) }}" ng-model-options="{ debounce: {'default': 200 }}" /></label>
+			</div>
+
+			<h2>SCSS Output</h2>
+			<output><pre>{{ scss }}</pre></output>
+
+			<h2>CSS Output</h2>
+			<output><pre>{{ css }}</pre></output>
+		</aside>
+	</main>
+</body>
+</html>
