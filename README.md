@@ -7,7 +7,7 @@ a [reveal.js](https://github.com/hakimel/reveal.js) theme editor to tweak colors
 
 ## Installation & Usage
 
-    $ npm install uncloak
+    $ git clone https://github.com/lmtm/uncloak.git
     $ cd uncloak
     $ npm install
     $ npm start
