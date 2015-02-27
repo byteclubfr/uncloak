@@ -5,6 +5,10 @@
 
 a [reveal.js](https://github.com/hakimel/reveal.js) theme editor to tweak colors and font styles in a live GUI.
 
+# Screenshot
+
+![Screenshot](https://github.com/lmtm/uncloak/blob/master/screenshot.jpg?raw=true)
+
 ## Installation & Usage
 
     $ git clone https://github.com/lmtm/uncloak.git
