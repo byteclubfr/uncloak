@@ -15,14 +15,21 @@ main {
 	display: flex;
 	height: 100%;
 }
+/* reveal.js preview */
 iframe {
 	border: none;
 	flex-basis: 75%;
 }
+/* form and outputs */
 aside {
 	background: #eee;
 	flex-basis: 25%;
+	font-size: 12px;
 	padding: 1vw;
+}
+label {
+	display: inline-block;
+	min-width: 50%;;
 }
 output {
 	background: #ddd;

@@ -12,8 +12,15 @@
 		<iframe id="reveal-preview" src="node_modules/reveal.js/index.html" seamless></iframe>
 		<aside>
 			<h1>Uncloak</h1>
+
+			<div class="form-group">
+				<label for="selectedTheme">Theme</label>
+				<select id="selectedTheme" ng-model="selectedTheme" ng-options="t for t in themes"></select>
+			</div>
+
 			<div class="form-group" ng-repeat="(k, v) in theme">
-				<label>${{ k }} <input ng-model="theme[k]" type="{{ getType(k) }}" ng-model-options="{ debounce: {'default': 200 }}" /></label>
+				<label for="{{ k }}">${{ k }}</label>
+				<input id="{{ k }}" ng-model="theme[k]" type="{{ getType(k, theme[k]) }}" ng-model-options="{ debounce: {'default': 200 }}" />
 			</div>
 
 			<h2>SCSS Output</h2>

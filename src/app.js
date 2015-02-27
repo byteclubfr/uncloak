@@ -1,45 +1,47 @@
 "use strict";
 
 angular.module("uncloak", [])
-.controller("MainCtrl", function ($scope, $http) {
+.controller("MainCtrl", function ($scope, $http, ThemeSvc) {
 	// the following const will wrap the final output in the view
 	const HEADER = '@import "../template/mixins";\n@import "../template/settings";\n\n';
 	const FOOTER = '\n@import "../template/theme";';
 
-	// black theme default (see /reveal.js/css/theme/source/black.scss )
-	$scope.theme = {
-		backgroundColor: "#222",
-		mainColor: "#fff",
-		headingColor: "#fff",
-
-		mainFontSize: "38px",
-		mainFont: "'Source Sans Pro', Helvetica, sans-serif",
-		headingFont: "'Source Sans Pro', Helvetica, sans-serif",
-		headingTextShadow: "none",
-		headingLetterSpacing: "normal",
-		headingTextTransform: "uppercase",
-		headingFontWeight: 600,
-		linkColor: "#42affa",
-		linkColorHover: "lighten( $linkColor, 15% )",
-		selectionBackgroundColor: "lighten( $linkColor, 25% )",
-
-		heading1Size: "2.5em",
-		heading2Size: "1.6em",
-		heading3Size: "1.3em",
-		heading4Size: "1.0em"
-	};
+	$scope.themes = [];
+	// name
+	$scope.selectedTheme = "";
+	// scss vars
+	$scope.theme = {};
 
 	// outputs
 	$scope.scss = "";
 	$scope.css = "";
 
-	$scope.getType = function (k = "") {
-		if (~k.toLowerCase().indexOf("color")) {
+	// helper for inputs
+	$scope.getType = function (k = "", v = "") {
+		if (~k.toLowerCase().indexOf("color") || v[0] === "#") {
 			return "color";
 		}
 		return "text";
 	};
 
+	// init
+
+	// themes bundled with reveal.js
+	ThemeSvc.getList().then(function (list) {
+		$scope.themes = list;
+		// default (see /reveal.js/css/theme/source/black.scss )
+		$scope.selectedTheme = "black";
+	});
+
+	// watchers
+
+	// reload pristine theme
+	$scope.$watch("selectedTheme", function (nv) {
+		if (!nv) return;
+		ThemeSvc.get(nv).then(theme => $scope.theme = theme);
+	});
+
+	// values of the form have change
 	$scope.$watch("theme", function () {
 		var scss = "";
 		for (let k in $scope.theme) {
@@ -57,7 +59,7 @@ angular.module("uncloak", [])
 			.error(console.error);
 	}, true);
 
-	// feel the magic
+	// feel the DOM magic
 	function updateIframe () {
 		var id = "custom-css";
 		var previewDoc = document.getElementById("reveal-preview").contentDocument;
@@ -74,4 +76,22 @@ angular.module("uncloak", [])
 		link.id = id;
 		previewBody.appendChild(link);
 	}
+})
+.factory("ThemeSvc", function ($q, $http) {
+	// cache
+	var themes = [];
+
+	return {
+		getList () {
+			if (themes.length) return $q.when(themes);
+
+			return $http.get("/themes").then(function (res) {
+				themes = res.data;
+				return themes;
+			});
+		},
+		get (id) {
+			return $http.get("/themes/" + id).then(res => res.data);
+		}
+	};
 });
