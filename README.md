@@ -1,5 +1,5 @@
-[![Dependency Status](https://david-dm.org/lmtm/uncloak.svg?style=flat)](https://david-dm.org/)
-[![devDependency Status](https://david-dm.org/lmtm/uncloak/dev-status.svg?style=flat)](https://david-dm.org/#info=devDependencies)
+[![Dependency Status](https://david-dm.org/lmtm/uncloak.svg?style=flat)](https://david-dm.org/lmtm/uncloak)
+[![devDependency Status](https://david-dm.org/lmtm/uncloak/dev-status.svg?style=flat)](https://david-dm.org/lmtm/uncloak#info=devDependencies)
 
 # uncloak
 
