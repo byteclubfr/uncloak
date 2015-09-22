@@ -3,7 +3,7 @@
 var fs = require("fs");
 var sass = require("node-sass");
 var express = require("express");
-var bodyParser = require('body-parser');
+var bodyParser = require("body-parser");
 
 var THEME = "node_modules/reveal.js/css/theme/";
 var SOURCE = THEME + "source/";
@@ -29,13 +29,13 @@ app.post("/convert", function (req, res) {
 	var scss = mixins + settings + req.body.scss + theme;
 	sass.render({
 		data: scss,
-		success: function (result) {
-			custom = result.css;
-			res.send(result.css);
-		},
-		error: function (err) {
+	}, function (err, result) {
+		if (err) {
 			console.error("sass error", err);
 			res.send("sass error");
+		} else {
+			custom = result.css;
+			res.send(result.css);
 		}
 	});
 });

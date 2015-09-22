@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/lmtm/uncloak",
   "devDependencies": {
-    "babel": "^4.3.0",
+    "babel": "^5.8.23",
     "expect": "^1.6.0",
     "mocha": "^2.1.0"
   },
@@ -29,8 +29,8 @@
     "body-parser": "^1.12.0",
     "express": "^4.12.0",
     "lodash": "^3.3.1",
-    "node-sass": "^2.0.1",
+    "node-sass": "^3.3.3",
     "reveal.js": "^3.0.0",
-    "supervisor": "^0.6.0"
+    "supervisor": "^0.8.0"
   }
 }
