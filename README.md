@@ -1,5 +1,5 @@
-[![Dependency Status](https://david-dm.org/lmtm/uncloak.svg?style=flat)](https://david-dm.org/lmtm/uncloak)
-[![devDependency Status](https://david-dm.org/lmtm/uncloak/dev-status.svg?style=flat)](https://david-dm.org/lmtm/uncloak#info=devDependencies)
+[![Dependency Status](https://david-dm.org/byteclubfr/uncloak.svg?style=flat)](https://david-dm.org/byteclubfr/uncloak)
+[![devDependency Status](https://david-dm.org/byteclubfr/uncloak/dev-status.svg?style=flat)](https://david-dm.org/byteclubfr/uncloak#info=devDependencies)
 
 # uncloak
 
@@ -7,11 +7,11 @@ a [reveal.js](https://github.com/hakimel/reveal.js) theme editor to tweak colors
 
 # Screenshot
 
-![Screenshot](https://github.com/lmtm/uncloak/blob/master/screenshot.jpg?raw=true)
+![Screenshot](https://github.com/byteclubfr/uncloak/blob/master/screenshot.jpg?raw=true)
 
 ## Installation & Usage
 
-    $ git clone https://github.com/lmtm/uncloak.git
+    $ git clone https://github.com/byteclubfr/uncloak.git
     $ cd uncloak
     $ npm install
     $ npm start
