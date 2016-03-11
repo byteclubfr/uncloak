@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lmtm/uncloak.git"
+    "url": "https://github.com/byteclubfr/uncloak.git"
   },
   "author": "Delapouite",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lmtm/uncloak/issues"
+    "url": "https://github.com/byteclubfr/uncloak/issues"
   },
-  "homepage": "https://github.com/lmtm/uncloak",
+  "homepage": "https://github.com/byteclubfr/uncloak",
   "devDependencies": {
     "babel": "^5.8.23",
     "expect": "^1.6.0",
@@ -28,7 +28,6 @@
     "angular": "^1.4.5",
     "body-parser": "^1.12.0",
     "express": "^4.12.0",
-    "lodash": "^3.3.1",
     "node-sass": "^3.3.3",
     "reveal.js": "^3.0.0",
     "supervisor": "^0.9.1"
