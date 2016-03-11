@@ -1,35 +1,33 @@
 "use strict";
 
-var fs = require("fs");
-var sass = require("node-sass");
-var express = require("express");
-var bodyParser = require("body-parser");
+const fs = require("fs");
+const sass = require("node-sass");
+const express = require("express");
+const bodyParser = require("body-parser");
 
-var THEME = "node_modules/reveal.js/css/theme/";
-var SOURCE = THEME + "source/";
-var TEMPLATE = THEME + "template/";
+const THEME = "node_modules/reveal.js/css/theme/";
+const SOURCE = THEME + "source/";
+const TEMPLATE = THEME + "template/";
 
-var mixins = fs.readFileSync(TEMPLATE + "mixins.scss");
-var settings = fs.readFileSync(TEMPLATE + "settings.scss");
-var theme = fs.readFileSync(TEMPLATE + "theme.scss");
+const mixins = fs.readFileSync(TEMPLATE + "mixins.scss");
+const settings = fs.readFileSync(TEMPLATE + "settings.scss");
+const theme = fs.readFileSync(TEMPLATE + "theme.scss");
 
 var app = express();
 app.set("port", process.env.PORT || 8080);
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-	extended: true
-}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
 
 // generated css
 var custom = "";
 
 // called by the angular app
-app.post("/convert", function (req, res) {
+app.post("/convert", (req, res) => {
 	var scss = mixins + settings + req.body.scss + theme;
 	sass.render({
 		data: scss,
-	}, function (err, result) {
+	}, (err, result) => {
 		if (err) {
 			console.error("sass error", err);
 			res.send("sass error");
@@ -41,47 +39,41 @@ app.post("/convert", function (req, res) {
 });
 
 // called by the reveal iframe
-app.get("/custom.css", function (req, res) {
+app.get("/custom.css", (req, res) => {
 	res.type("css");
 	res.send(custom);
 });
 
-app.get("/themes/:id", function (req, res) {
-	fs.readFile(SOURCE + req.params.id + ".scss", "utf-8", function (err, file) {
+app.get("/themes/:id", (req, res) => {
+	fs.readFile(SOURCE + req.params.id + ".scss", "utf-8", (err, file) => {
 		if (err) console.error(err);
 
 		res.send(mapScss(file));
 	});
 });
 
-app.get("/themes", function (req, res) {
-	fs.readdir(SOURCE, function (err, files) {
+app.get("/themes", (req, res) => {
+	fs.readdir(SOURCE, (err, files) => {
 		if (err) console.error(err);
 		// extension irrelevant
-		files = files.map(function (file) {
-			return file.split(".")[0];
-		});
+		files = files.map(file => file.split(".")[0]);
 		res.send(files);
 	});
 });
 
-app.listen(app.get("port"), function () {
-	console.log("Express server listening on port " + app.get("port"));
+app.listen(app.get("port"), () => {
+	console.log(`Express server listening on port ${app.get("port")}`);
 });
 
 // convert a scss into a map of vars/value
-function mapScss (file) {
+var mapScss = (file) => {
 	return file
 	.split("\n")
 	// only vars
-	.filter(function (line) {
-		return line[0] === "$";
-	})
+	.filter(line => line[0] === "$")
 	// trim $ and ;
-	.map(function (line) {
-		return line.slice(1, -1);
-	})
-	.reduce(function (o, v) {
+	.map(line => line.slice(1, -1))
+	.reduce((o, v) => {
 		v = v.split(":");
 		o[v[0].trim()] = v[1].trim();
 		return o;
