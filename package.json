@@ -29,7 +29,7 @@
     "body-parser": "^1.12.0",
     "express": "^4.12.0",
     "node-sass": "^3.3.3",
-    "reveal.js": "^3.0.0",
+    "reveal.js": "^3.3.0",
     "supervisor": "^0.10.0"
   }
 }

@@ -17,8 +17,8 @@ angular.module("uncloak", [])
 	$scope.css = "";
 
 	// helper for inputs
-	$scope.getType = function (k = "", v = "") {
-		if (~k.toLowerCase().indexOf("color") || v[0] === "#") {
+	$scope.getType = (k = "", v = "") => {
+		if (k.toLowerCase().includes("color") || v[0] === "#") {
 			return "color";
 		}
 		return "text";
@@ -27,7 +27,7 @@ angular.module("uncloak", [])
 	// init
 
 	// themes bundled with reveal.js
-	ThemeSvc.getList().then(function (list) {
+	ThemeSvc.getList().then((list) => {
 		$scope.themes = list;
 		// default (see /reveal.js/css/theme/source/black.scss )
 		$scope.selectedTheme = "black";
@@ -36,14 +36,14 @@ angular.module("uncloak", [])
 	// watchers
 
 	// reload pristine theme
-	$scope.$watch("selectedTheme", function (nv) {
+	$scope.$watch("selectedTheme", (nv) => {
 		if (!nv) return;
 		ThemeSvc.get(nv).then(theme => $scope.theme = theme);
 	});
 
 	// values of the form have change
-	$scope.$watch("theme", function () {
-		var scss = "";
+	$scope.$watch("theme", () => {
+		let scss = "";
 		for (let k in $scope.theme) {
 			scss += "$" + k + ": " + $scope.theme[k] + ";\n";
 		}
@@ -51,26 +51,26 @@ angular.module("uncloak", [])
 		$scope.scss = HEADER + scss + FOOTER;
 
 		$http.post("http://localhost:8080/convert", { scss })
-			.success(function (data) {
+			.then(({ data }) => {
 				// update css output
 				$scope.css = data;
 				updateIframe();
 			})
-			.error(console.error);
+			.catch(console.error);
 	}, true);
 
 	// feel the DOM magic
 	function updateIframe () {
-		var id = "custom-css";
-		var previewDoc = document.getElementById("reveal-preview").contentDocument;
-		var previewBody = previewDoc.body;
+		const id = "custom-css";
+		const previewDoc = document.getElementById("reveal-preview").contentDocument;
+		const previewBody = previewDoc.body;
 		// iframe not ready
 		if (!previewBody) return;
 
 		if (previewDoc.getElementById(id)) {
 			previewDoc.getElementById(id).remove();
 		}
-		var link = document.createElement("link");
+		const link = document.createElement("link");
 		link.href = "/custom.css?" + Math.random();
 		link.rel = "stylesheet";
 		link.id = id;
@@ -79,13 +79,13 @@ angular.module("uncloak", [])
 })
 .factory("ThemeSvc", function ($q, $http) {
 	// cache
-	var themes = [];
+	let themes = [];
 
 	return {
 		getList () {
 			if (themes.length) return $q.when(themes);
 
-			return $http.get("/themes").then(function (res) {
+			return $http.get("/themes").then((res) => {
 				themes = res.data;
 				return themes;
 			});
