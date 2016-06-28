@@ -26,7 +26,7 @@ var custom = "";
 app.post("/convert", (req, res) => {
 	var scss = mixins + settings + req.body.scss + theme;
 	sass.render({
-		data: scss,
+		data: scss
 	}, (err, result) => {
 		if (err) {
 			console.error("sass error", err);
@@ -78,4 +78,4 @@ var mapScss = (file) => {
 		o[v[0].trim()] = v[1].trim();
 		return o;
 	}, {});
-}
+};

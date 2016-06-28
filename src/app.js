@@ -50,7 +50,7 @@ angular.module("uncloak", [])
 		// update scss output
 		$scope.scss = HEADER + scss + FOOTER;
 
-		$http.post("http://localhost:8080/convert", { scss })
+		$http.post("/convert", { scss })
 			.then(({ data }) => {
 				// update css output
 				$scope.css = data;
