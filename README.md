@@ -16,7 +16,11 @@ a [reveal.js](https://github.com/hakimel/reveal.js) theme editor to tweak colors
     $ npm install
     $ npm start
 
-This will start a webserver on `localhost:8080`. The standard reveal.js presentation will be loaded in the left frame.
+This will start a web server on `localhost:8080`.
+
+Open a modern web browser (one that supports ES2015 like Firefox or Chrome).
+
+The standard reveal.js presentation will be loaded in the left frame.
 
 Everytime you tweak the inputs the right sidebar (colors, sizes…), 3 things happen in realtime :
 

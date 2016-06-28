@@ -5,8 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --check-leaks",
-    "build": "babel --source-maps --out-dir lib src",
-    "prepublish": "npm run build",
     "start": "supervisor server.js",
     "lint": "eslint server.js src/app.js"
   },
@@ -21,7 +19,6 @@
   },
   "homepage": "https://github.com/byteclubfr/uncloak",
   "devDependencies": {
-    "babel": "^5.8.23",
     "eslint": "^2.13.1",
     "expect": "^1.6.0",
     "mocha": "^2.1.0"
