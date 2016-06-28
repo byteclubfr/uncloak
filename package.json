@@ -1,6 +1,6 @@
 {
   "name": "uncloak",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "reveal.js themes editor",
   "main": "index.js",
   "scripts": {
